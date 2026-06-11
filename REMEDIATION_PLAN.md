@@ -1,4 +1,4 @@
-# Remediation Plan
+﻿# Remediation Plan
 
 ## Current Phase
 
@@ -24,33 +24,33 @@ This plan is now updated as a post-patch remediation record.
 
 ### Finding 1: Input Validation Gap
 
-Status: remediated  
-Risk addressed: user-controlled input may not be strongly validated  
-Decision: input validation accepts only string input, trims input, applies maximum length, requires local path-like shape, and returns structured output  
+Status: remediated
+Risk addressed: user-controlled input may not be strongly validated
+Decision: input validation accepts only string input, trims input, applies maximum length, requires local path-like shape, and returns structured output
 
 ### Finding 2: Authorization Placeholder Risk
 
-Status: remediated  
-Risk addressed: demo authorization logic may trust request-controlled data  
-Decision: authorization is deny-by-default and request-controlled `x-demo-role` no longer grants access  
+Status: remediated
+Risk addressed: demo authorization logic may trust request-controlled data
+Decision: authorization is deny-by-default and request-controlled `x-demo-role` no longer grants access
 
 ### Finding 3: Missing Security Headers
 
-Status: remediated  
-Risk addressed: response headers are not explicitly hardened  
-Decision: defensive JSON headers were added  
+Status: remediated
+Risk addressed: response headers are not explicitly hardened
+Decision: defensive JSON headers were added
 
 ### Finding 4: Rate Limit Gap
 
-Status: documented only  
-Risk: theoretical local design gap  
-Decision: no rate limiting was implemented in this patch; no external test was performed  
+Status: documented only
+Risk: theoretical local design gap
+Decision: no rate limiting was implemented in this patch; no external test was performed
 
 ### Finding 5: Dependency Review
 
-Status: reviewed  
-Risk: currently low  
-Decision: zero third-party dependency surface was preserved  
+Status: reviewed
+Risk: currently low
+Decision: zero third-party dependency surface was preserved
 
 ## Validation Result
 

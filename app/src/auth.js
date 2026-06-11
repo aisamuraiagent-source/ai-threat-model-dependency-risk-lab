@@ -1,9 +1,8 @@
-﻿function authorizeDemoRequest(requestMetadata) {
-  const role = requestMetadata && requestMetadata.role ? requestMetadata.role : "guest";
-
+function authorizeDemoRequest() {
   return {
-    allowed: role === "admin",
-    role
+    allowed: false,
+    policy: "local-demo-deny-by-default",
+    reason: "Privileged access is disabled for this local demo."
   };
 }
 

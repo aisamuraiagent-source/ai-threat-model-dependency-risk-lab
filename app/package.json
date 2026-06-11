@@ -1,0 +1,13 @@
+﻿{
+  "name": "ai-threat-model-dependency-risk-lab",
+  "version": "0.1.0-baseline",
+  "description": "Local defensive demo app for threat modeling, dependency risk review, patch validation, and audit-ready reporting.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test tests/security-check.test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

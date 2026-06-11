@@ -2,11 +2,11 @@
 
 ## Summary
 
-This lab documents a local-first defensive AI workflow for threat modeling, dependency risk review, remediation planning, patch validation, and audit-ready reporting.
+This lab documents a controlled public baseline scaffold for a local-first defensive AI workflow. Codex CLI was used after scaffold creation to produce a defensive baseline review artifact. Remediation planning, patch validation, and audit-ready reporting remain pending unless later evidence states otherwise.
 
 ## Objective
 
-Build a public sanitized portfolio artifact showing how AI-assisted defensive workflows can remain scoped, reviewed, validated, and human-approved.
+Build a public sanitized portfolio artifact showing how defensive AI-assisted review workflows can remain scoped, reviewed, validated, and human-approved.
 
 ## Repository Under Review
 
@@ -29,16 +29,19 @@ No real credentials, external systems, private IPs, hostnames, usernames, tokens
 
 ## Method
 
-1. Establish controlled baseline.
-2. Create repository-specific threat model.
-3. Review dependency surface.
-4. Identify defensive findings.
-5. Define remediation plan.
-6. Require human approval.
-7. Apply scoped patch.
-8. Validate patch locally.
-9. Publish sanitized evidence.
+1. Establish controlled public baseline scaffold.
+2. Run Codex-assisted defensive baseline review after scaffold creation.
+3. Create repository-specific threat model.
+4. Review dependency surface.
+5. Identify defensive findings.
+6. Define remediation plan.
+7. Require human approval.
+8. Apply scoped patch.
+9. Validate patch locally.
+10. Publish sanitized evidence.
 
 ## Current Result
 
-Baseline scaffold created. No remediation has been applied yet.
+Initial controlled public baseline scaffold created. Codex-assisted defensive baseline review documented. No remediation has been applied yet.
+
+Codex Security usage has not yet occurred in this repository.

@@ -6,11 +6,13 @@ No patch applied yet.
 
 ## Baseline Validation
 
-Baseline scaffold created.
+Initial controlled public baseline scaffold created before Codex-assisted review.
 
 ## Post-Patch Validation
 
 Pending.
+
+Codex Security usage has not yet occurred in this repository.
 
 ## Required Validation After Remediation
 

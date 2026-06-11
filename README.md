@@ -1,10 +1,10 @@
 ﻿# AI Threat Modeling & Dependency Risk Review Lab
 
-Public sanitized defensive AI lab for repo-specific threat modeling, dependency risk review, patch validation, and audit-ready remediation evidence using OpenAI Codex CLI with human approval.
+Public sanitized defensive AI lab for repo-specific threat modeling, dependency risk review, patch validation, and audit-ready remediation evidence with human approval.
 
 ## Purpose
 
-This lab demonstrates a defensive, local-first AI-assisted security workflow: repo-specific threat modeling, dependency risk review, scoped remediation, human approval, patch validation, and sanitized audit-ready reporting.
+This repository currently contains a controlled public baseline scaffold for a defensive, local-first AI-assisted security workflow. Codex CLI was used after the scaffold existed to create a defensive baseline review artifact. Remediation, patch validation, and final reporting remain pending unless a later evidence artifact states otherwise.
 
 ## Scope
 
@@ -35,14 +35,15 @@ Out of scope:
 
 ## Workflow
 
-1. Controlled baseline.
-2. Repo-specific threat model.
-3. Dependency risk review.
-4. Prioritized defensive findings.
-5. Remediation plan.
-6. Human approval gate.
-7. Patch validation.
-8. Sanitized audit-ready reporting.
+1. Controlled public baseline scaffold.
+2. Codex-assisted defensive baseline review.
+3. Repo-specific threat model.
+4. Dependency risk review.
+5. Prioritized defensive findings.
+6. Remediation plan.
+7. Human approval gate.
+8. Patch validation.
+9. Sanitized audit-ready reporting.
 
 ## Professional Positioning
 
@@ -52,7 +53,11 @@ It does not claim affiliation with OpenAI, Daybreak, Trusted Access for Cyber, o
 
 ## Repository Status
 
-Current phase: controlled baseline scaffold.
+Current phase: controlled public baseline scaffold with Codex-assisted defensive baseline review documented.
+
+Remediation status: pending.
+
+Codex Security status: not yet performed in this repository.
 
 ## Safety Statement
 

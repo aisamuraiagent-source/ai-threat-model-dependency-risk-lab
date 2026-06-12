@@ -4,7 +4,7 @@ Public sanitized defensive AI lab for repo-specific threat modeling, dependency 
 
 ## Purpose
 
-This repository currently contains a controlled public baseline scaffold for a defensive, local-first AI-assisted security workflow. Codex CLI was used after the scaffold existed to create a defensive baseline review artifact. Remediation, patch validation, and final reporting remain pending unless a later evidence artifact states otherwise.
+This repository contains a controlled public baseline scaffold for a defensive, local-first AI-assisted security workflow. Codex CLI was used after the scaffold existed to create a defensive baseline review artifact. The remediation proposal was completed, the approved defensive patch was applied, post-patch validation was completed, and sanitized evidence was documented.
 
 ## Scope
 
@@ -49,15 +49,24 @@ Out of scope:
 
 This lab is aligned with defensive AI remediation workflows.
 
-It does not claim affiliation with OpenAI, Daybreak, Trusted Access for Cyber, or Codex Security.
+It does not claim affiliation with OpenAI, Daybreak, or Trusted Access for Cyber.
+
+Codex Security use is documented only as a sanitized repository scan result. No external program access, partnership, endorsement, or acceptance is claimed.
 
 ## Repository Status
 
-Current phase: controlled public baseline scaffold with Codex-assisted defensive baseline review documented.
+Current phase: sanitized defensive lab with baseline, remediation, validation, and initial Codex Security scan evidence documented.
 
-Remediation status: pending.
+Confirmed status:
 
-Codex Security status: not yet performed in this repository.
+- baseline created;
+- Codex CLI review completed;
+- documentation overclaiming corrected;
+- remediation proposal completed;
+- approved defensive patch applied;
+- post-patch validation completed;
+- Codex Security initial scan completed;
+- no discoveries surfaced yet.
 
 ## Safety Statement
 

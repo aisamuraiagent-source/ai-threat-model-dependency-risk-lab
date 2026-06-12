@@ -2,7 +2,7 @@
 
 ## Summary
 
-This lab documents a controlled public baseline scaffold for a local-first defensive AI workflow. Codex CLI was used after scaffold creation to produce a defensive baseline review artifact. Remediation planning, patch validation, and audit-ready reporting remain pending unless later evidence states otherwise.
+This lab documents a controlled public baseline scaffold for a local-first defensive AI workflow. Codex CLI was used after scaffold creation to produce a defensive baseline review artifact. Remediation planning, approved patch implementation, local validation, and sanitized reporting have been completed for the documented scope.
 
 ## Objective
 
@@ -42,6 +42,8 @@ No real credentials, external systems, private IPs, hostnames, usernames, tokens
 
 ## Current Result
 
-Initial controlled public baseline scaffold created. Codex-assisted defensive baseline review documented. No remediation has been applied yet.
+Initial controlled public baseline scaffold created. Codex-assisted defensive baseline review documented. Remediation proposal completed. Approved defensive patch applied. Post-patch validation completed.
 
-Codex Security usage has not yet occurred in this repository.
+Codex Security initial scan completed for the repository state reviewed by the scan. Seven commits were verified, a repository-specific threat model was generated, and no discoveries surfaced yet.
+
+The main remaining issue identified was documentation integrity inconsistency: older documentation still described remediation and Codex Security usage as pending after those phases had been completed. This case study has been corrected to reflect the current sanitized evidence state.

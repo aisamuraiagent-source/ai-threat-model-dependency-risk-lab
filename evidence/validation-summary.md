@@ -2,7 +2,7 @@
 
 ## Current Status
 
-Approved defensive remediation patch applied and committed.
+Approved defensive remediation patch applied and committed. Initial Codex Security scan evidence has been reviewed and summarized in sanitized form.
 
 ## Confirmed Evidence
 
@@ -13,6 +13,11 @@ Approved defensive remediation patch applied and committed.
 - No third-party dependency was added.
 - No external scan was performed.
 - No external target was tested.
+- Codex Security initial scan completed.
+- Seven commits were verified by the scan.
+- A repository-specific threat model was generated.
+- No discoveries surfaced yet.
+- Documentation integrity inconsistency was identified and corrected.
 
 ## Remediation Applied
 
@@ -30,7 +35,9 @@ The confirmed local validation result is pass for the approved defensive remedia
 
 Codex CLI was used for baseline review, remediation proposal, patch implementation, and review assistance.
 
-Codex Security has not yet been used in this repository.
+Codex Security initial scan was completed after the remediation and validation documentation existed. The scan verified seven commits, generated a repository-specific threat model, and surfaced no discoveries yet.
+
+The main issue identified from the scan context was documentation integrity inconsistency: some public documents still described remediation or Codex Security usage as pending. Those status statements were corrected in the allowed documentation files.
 
 ## Codex Review Result
 
@@ -54,7 +61,7 @@ Codex /review found no discrete regressions in the modified code.
 
 ## Human Approval Status
 
-The defensive remediation patch was approved before implementation. This validation summary is pending final human documentation review before publication.
+The defensive remediation patch was approved before implementation. The Codex Security initial scan result was reviewed for sanitized public evidence. No automatic fix was applied, no pull request was opened, and no external scan was performed.
 
 ## Sanitization Statement
 
@@ -66,7 +73,7 @@ This validation summary excludes hostnames, usernames, local paths, private IPs,
 
 ## Safe Next Action
 
-Perform final human review and then decide whether a future Codex Security run should be created as a separate documented phase.
+Perform final human review of the updated documentation-only evidence, then continue with a new commit only if the repository owner approves publication.
 
 ## Result
 

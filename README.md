@@ -45,6 +45,12 @@ Out of scope:
 8. Patch validation.
 9. Sanitized audit-ready reporting.
 
+## GitHub Repository Protection
+
+Branch protection is documented in [GitHub Rulesets Setup](GITHUB_RULESETS.md).
+
+The minimum recommended control is a branch ruleset for the default branch with pull request review required, no bypass list, and no required status checks until CI exists in GitHub.
+
 ## Professional Positioning
 
 This lab is aligned with defensive AI remediation workflows.

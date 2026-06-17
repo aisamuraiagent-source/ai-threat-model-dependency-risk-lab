@@ -45,3 +45,11 @@ Reviewer: Repository owner
 Action: Codex Security initial scan result reviewed for sanitized public evidence
 Decision: Reviewed for documentation-only publication
 Notes: No automatic fix was applied. No pull request was opened. No external scan was performed. No raw UI, account, local machine, network, credential, or log data is published. The scan evidence is documented only in sanitized summary form.
+
+### Entry 6
+
+Date: 2026-06-17
+Reviewer: Repository owner
+Action: GitHub branch ruleset `protect-main-defensive-lab` created for default branch protection
+Decision: Applied; pending pull request review for publication in this log
+Notes: The ruleset targets the default branch, enforcement is active, the bypass list was left empty, pull request review requires one approval, stale approvals are dismissed on new commits, review thread resolution is required, force pushes and branch deletion are blocked, and required status checks are intentionally deferred until GitHub CI exists. No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published. No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.

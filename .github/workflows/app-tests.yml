@@ -3,15 +3,9 @@ name: App Tests
 on:
   workflow_dispatch:
   pull_request:
-    paths:
-      - "app/**"
-      - ".github/workflows/app-tests.yml"
   push:
     branches:
       - main
-    paths:
-      - "app/**"
-      - ".github/workflows/app-tests.yml"
 
 permissions:
   contents: read

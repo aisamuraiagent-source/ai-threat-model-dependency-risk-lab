@@ -101,26 +101,33 @@ Do not target every branch for this initial setup. The control objective is to p
 
 ## Required Status Checks
 
-Do not enable required status checks yet.
+Required status checks may now be enabled only after explicit human approval.
 
 Reason:
 
 - the repository has local tests;
-- GitHub CI has not been configured in this repository;
-- requiring a nonexistent check can block merges without adding real assurance;
-- claiming required CI before it exists would overstate the repository control state.
+- GitHub CI has now been configured with the `App Tests` workflow;
+- the `App Tests / test (pull_request)` check has executed successfully on PR #2;
+- requiring the pull request check can add merge-time assurance for branch protection;
+- changing ruleset enforcement still requires a separate human approval step.
 
-After CI is added, update this guide and require the exact GitHub check name produced by the workflow.
+If approved, require this exact status check:
+
+```text
+App Tests / test (pull_request)
+```
+
+Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
 
 ## Recommended Future CI Gate
 
-When GitHub Actions is intentionally added, the minimum useful workflow should run:
+The current minimum CI gate runs:
 
 ```text
-npm test --prefix app
+npm test
 ```
 
-Only after that workflow exists and passes on GitHub should the ruleset require the matching status check.
+The command runs from the app/ working directory in the GitHub Actions workflow.
 
 ## Review Before Activating
 
@@ -132,7 +139,7 @@ Before changing enforcement to `Active`, confirm:
 - pull request review is required;
 - force pushes are blocked;
 - branch deletion is blocked;
-- required status checks are not enabled yet;
+- required status checks use only the observed `App Tests / test (pull_request)` check;
 - no external scan or affiliation claim was added to the repository documentation.
 
 ## Safe Configuration Summary
@@ -149,7 +156,7 @@ Required PR review: enabled
 Required approvals: 1
 Block force pushes: enabled
 Block deletion: enabled
-Required status checks: disabled until CI exists
+Required status checks: App Tests / test (pull_request), after CI exists and has passed on the pull request
 ```
 
 ## What This Ruleset Does Not Claim
@@ -178,5 +185,5 @@ After the ruleset is created in GitHub, update the human approval log with a con
 - default branch targeted;
 - bypass list left empty;
 - PR review required;
-- required status checks intentionally deferred until CI exists;
+- required status check enabled only after the matching GitHub Actions check passed;
 - no external scan or affiliation claim added.

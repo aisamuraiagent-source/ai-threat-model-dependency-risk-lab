@@ -107,14 +107,14 @@ Reason:
 
 - the repository has local tests;
 - GitHub CI has now been configured with the `App Tests` workflow;
-- the `App Tests / test` check has executed successfully on PR #2;
+- the `App Tests / test (pull_request)` check has executed successfully on PR #2;
 - requiring the exact observed check can add merge-time assurance;
 - changing ruleset enforcement still requires a separate human approval step.
 
 If approved, require this exact status check:
 
 ```text
-App Tests / test
+App Tests / test (pull_request)
 ```
 
 Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
@@ -139,7 +139,7 @@ Before changing enforcement to `Active`, confirm:
 - pull request review is required;
 - force pushes are blocked;
 - branch deletion is blocked;
-- required status checks are not enabled yet;
+- required status checks use only the observed `App Tests / test (pull_request)` check;
 - no external scan or affiliation claim was added to the repository documentation.
 
 ## Safe Configuration Summary
@@ -156,7 +156,7 @@ Required PR review: enabled
 Required approvals: 1
 Block force pushes: enabled
 Block deletion: enabled
-Required status checks: disabled until CI exists
+Required status checks: App Tests / test (pull_request), after CI exists and has passed
 ```
 
 ## What This Ruleset Does Not Claim
@@ -185,5 +185,5 @@ After the ruleset is created in GitHub, update the human approval log with a con
 - default branch targeted;
 - bypass list left empty;
 - PR review required;
-- required status checks intentionally deferred until CI exists;
+- required status check enabled only after the matching GitHub Actions check passed;
 - no external scan or affiliation claim added.

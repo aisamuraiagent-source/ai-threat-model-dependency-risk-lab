@@ -69,7 +69,7 @@ No HIGH findings were identified during this static local review.
 
 **Evidence**
 
-A minimal GitHub Actions workflow now exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on pull requests and pushes that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
+A minimal GitHub Actions workflow now exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on every pull request so the required `App Tests / test` check is always created, runs on pushes to `main` that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
 
 The `App Tests / test` check executed successfully on PR #2. `GITHUB_RULESETS.md` now documents the exact check name that may be required after explicit human approval.
 

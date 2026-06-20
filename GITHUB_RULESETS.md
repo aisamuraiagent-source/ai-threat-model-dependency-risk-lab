@@ -101,26 +101,33 @@ Do not target every branch for this initial setup. The control objective is to p
 
 ## Required Status Checks
 
-Do not enable required status checks yet.
+Required status checks may now be enabled only after explicit human approval.
 
 Reason:
 
 - the repository has local tests;
-- GitHub CI has not been configured in this repository;
-- requiring a nonexistent check can block merges without adding real assurance;
-- claiming required CI before it exists would overstate the repository control state.
+- GitHub CI has now been configured with the `App Tests` workflow;
+- the `App Tests / test` check has executed successfully on PR #2;
+- requiring the exact observed check can add merge-time assurance;
+- changing ruleset enforcement still requires a separate human approval step.
 
-After CI is added, update this guide and require the exact GitHub check name produced by the workflow.
+If approved, require this exact status check:
+
+```text
+App Tests / test
+```
+
+Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
 
 ## Recommended Future CI Gate
 
-When GitHub Actions is intentionally added, the minimum useful workflow should run:
+The current minimum CI gate runs:
 
 ```text
-npm test --prefix app
+npm test
 ```
 
-Only after that workflow exists and passes on GitHub should the ruleset require the matching status check.
+The command runs from the `app/` working directory in the GitHub Actions workflow.
 
 ## Review Before Activating
 

@@ -52,7 +52,7 @@ Use esta ordem na tela `Rulesets / New branch ruleset`:
 6. Se `Include default branch` nao aparecer, escolha `Include by pattern` e use `main`.
 7. Role ate as regras de branch.
 8. Ative apenas as protecoes minimas descritas neste guia.
-9. Nao ative status checks obrigatorios enquanto nao existir CI configurado no GitHub.
+9. Ative o status check obrigatorio `App Tests / test` somente se houver aprovacao humana explicita para essa alteracao.
 10. Revise a tela inteira antes de salvar.
 11. Salve inicialmente em `Disabled` ou modo de avaliacao, se disponivel.
 12. Mude para `Active` somente depois de confirmar que a regra mira a branch correta.
@@ -68,7 +68,7 @@ Enable these protections for the default branch:
 - block force pushes;
 - block branch deletion.
 
-These controls preserve a human review gate without inventing a CI or external validation process that does not exist yet.
+These controls preserve a human review gate. The `App Tests / test` CI check now exists, but requiring it remains a separate human-approved ruleset change.
 
 ## Bypass List
 
@@ -101,26 +101,33 @@ Do not target every branch for this initial setup. The control objective is to p
 
 ## Required Status Checks
 
-Do not enable required status checks yet.
+Required status checks may now be enabled only after explicit human approval.
 
 Reason:
 
 - the repository has local tests;
-- GitHub CI has not been configured in this repository;
-- requiring a nonexistent check can block merges without adding real assurance;
-- claiming required CI before it exists would overstate the repository control state.
+- GitHub CI has now been configured with the `App Tests` workflow;
+- the `App Tests / test` check has executed successfully on PR #2;
+- requiring the exact observed check can add merge-time assurance;
+- changing ruleset enforcement still requires a separate human approval step.
 
-After CI is added, update this guide and require the exact GitHub check name produced by the workflow.
-
-## Recommended Future CI Gate
-
-When GitHub Actions is intentionally added, the minimum useful workflow should run:
+If approved, require this exact status check:
 
 ```text
-npm test --prefix app
+App Tests / test
 ```
 
-Only after that workflow exists and passes on GitHub should the ruleset require the matching status check.
+Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
+
+## Current CI Gate
+
+The current minimum CI gate runs:
+
+```text
+npm test
+```
+
+The command runs from the `app/` working directory in the GitHub Actions workflow.
 
 ## Review Before Activating
 
@@ -132,7 +139,7 @@ Before changing enforcement to `Active`, confirm:
 - pull request review is required;
 - force pushes are blocked;
 - branch deletion is blocked;
-- required status checks are not enabled yet;
+- required status checks are enabled only if explicit human approval selects the exact `App Tests / test` check;
 - no external scan or affiliation claim was added to the repository documentation.
 
 ## Safe Configuration Summary
@@ -149,7 +156,7 @@ Required PR review: enabled
 Required approvals: 1
 Block force pushes: enabled
 Block deletion: enabled
-Required status checks: disabled until CI exists
+Required status checks: require `App Tests / test` only after explicit human approval
 ```
 
 ## What This Ruleset Does Not Claim
@@ -158,7 +165,7 @@ This ruleset does not claim:
 
 - that vulnerabilities do not exist;
 - that external scanning was performed;
-- that GitHub CI is configured;
+- that GitHub CI or required status checks prove the absence of vulnerabilities;
 - that a pull request was opened by any external scanner;
 - that an automatic fix was applied;
 - that the repository is affiliated with OpenAI, Daybreak, or Trusted Access for Cyber;
@@ -170,13 +177,13 @@ The ruleset is a repository hygiene control. It should be described as a branch 
 
 Security and remediation evidence remain limited to the sanitized documentation already present in this repository.
 
-## Next Documentation Update
+## Human Approval Log Entry
 
-After the ruleset is created in GitHub, update the human approval log with a concise sanitized entry that records:
+The human approval log should include a concise sanitized entry that records:
 
 - branch ruleset created;
 - default branch targeted;
 - bypass list left empty;
 - PR review required;
-- required status checks intentionally deferred until CI exists;
+- required status checks either left disabled or explicitly approved for `App Tests / test`;
 - no external scan or affiliation claim added.

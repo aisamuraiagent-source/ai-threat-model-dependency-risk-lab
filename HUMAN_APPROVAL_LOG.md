@@ -52,4 +52,12 @@ Date: 2026-06-17
 Reviewer: Repository owner
 Action: GitHub branch ruleset `protect-main-defensive-lab` created for default branch protection
 Decision: Applied; pending pull request review for publication in this log
-Notes: The ruleset targets the default branch, enforcement is active, the bypass list was left empty, pull request review requires one approval, stale approvals are dismissed on new commits, review thread resolution is required, force pushes and branch deletion are blocked, and required status checks are intentionally deferred until GitHub CI exists. No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published. No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.
+Notes: The ruleset targets the default branch, enforcement is active, the bypass list was left empty, pull request review requires one approval, stale approvals are dismissed on new commits, review thread resolution is required, force pushes and branch deletion are blocked, and required status checks were intentionally deferred at creation time before the `App Tests / test` check was available. No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published. No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.
+
+### Entry 7
+
+Date: 2026-06-20
+Reviewer: Repository owner
+Action: Ruleset documentation follow-up recorded after CI status check guidance update
+Decision: Documentation-only approval record; no GitHub ruleset enforcement change applied by this entry
+Notes: Branch ruleset created; default branch targeted; bypass list left empty; PR review required; required status checks left disabled pending explicit human approval for `App Tests / test`; no external scan or affiliation claim added.

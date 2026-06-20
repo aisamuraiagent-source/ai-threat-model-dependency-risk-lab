@@ -177,9 +177,9 @@ The ruleset is a repository hygiene control. It should be described as a branch 
 
 Security and remediation evidence remain limited to the sanitized documentation already present in this repository.
 
-## Next Documentation Update
+## Human Approval Log Entry
 
-After the ruleset is created in GitHub, update the human approval log with a concise sanitized entry that records:
+The human approval log should include a concise sanitized entry that records:
 
 - branch ruleset created;
 - default branch targeted;

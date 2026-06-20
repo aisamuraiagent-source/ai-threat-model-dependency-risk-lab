@@ -258,6 +258,7 @@ Continue avoiding raw logs, account identifiers, local paths, private hostnames,
 
 ## Safe Next Steps
 
-- Review this findings draft.
-- Approve or edit the proposed findings.
-- If approved, propose separate minimal patches for CI, server localhost binding, and documentation consistency.
+- Verify in GitHub that `App Tests / test` remains passing on the current pull request.
+- After explicit human approval, enable the required `App Tests / test` status check in the GitHub ruleset.
+- Keep merge blocked if the required check is missing or failing after enforcement is enabled.
+- Propose separate minimal patches for localhost binding and documentation consistency only after the status-check enforcement gate is complete.

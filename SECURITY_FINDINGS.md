@@ -65,42 +65,44 @@ No HIGH findings were identified during this static local review.
 
 ## MEDIUM Findings
 
-### MEDIUM-001: No versioned CI workflow enforces tests or security checks on pull requests
+### MEDIUM-001: App test CI exists but the required status check is not yet enforced
 
 **Evidence**
 
-No versioned CI workflow was identified in the tracked file list. Documentation states that GitHub CI has not been configured yet and that required status checks are intentionally deferred.
+A minimal GitHub Actions workflow now exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on every pull request so the required `App Tests / test` check is always created, runs on pushes to `main` that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
+
+The `App Tests / test` check executed successfully on PR #2. `GITHUB_RULESETS.md` now documents the exact check name that may be required after explicit human approval.
 
 Relevant files:
 
-- `evidence/github-ruleset-setup.md`
+- `.github/workflows/app-tests.yml`
 - `GITHUB_RULESETS.md`
 - `app/package.json`
 
 **Impact**
 
-Without CI, pull requests can rely only on manual execution of local tests and human review. This weakens regression prevention and makes it easier for future changes to bypass the current local security checks.
+The original CI absence has been remediated, but merge-time enforcement is not complete until the GitHub ruleset requires the passing `App Tests / test` status check. Until then, reviewers still need to verify that the check ran and passed before merge.
 
 **Recommended Fix**
 
-Add a minimal GitHub Actions workflow that:
+After human approval, update the GitHub ruleset manually to require the exact observed status check:
 
-- checks out the repository;
-- sets up Node.js;
-- runs `npm test` from `app/`;
-- optionally adds a lightweight static validation step that does not require network or third-party scanners.
+```text
+App Tests / test
+```
 
-After CI exists and has run successfully, update repository rulesets to require the CI status check before merge.
+Do not require additional checks until they have run successfully on GitHub and are separately approved.
 
 **Validation Test**
 
-- Open a pull request with the workflow present.
-- Confirm the test job runs automatically.
-- Confirm branch protection requires the workflow to pass before merge.
+- Open or update a pull request.
+- Confirm `App Tests / test` runs automatically and passes.
+- Enable the required status check in the GitHub ruleset only after approval.
+- Confirm GitHub blocks merge when the required check is missing or failing.
 
 **Residual Risk**
 
-CI validates only the configured checks. It does not replace human review, threat modeling, dependency review, or periodic security assessment.
+CI validates only the configured checks and does not replace human review, threat modeling, dependency review, or periodic security assessment. The current residual risk is ruleset enforcement, not CI availability.
 
 ---
 
@@ -248,15 +250,15 @@ Continue avoiding raw logs, account identifiers, local paths, private hostnames,
 
 ## Prioritized Remediation Backlog
 
-1. Add minimal CI workflow for local tests.
-2. Enable required CI status check in GitHub ruleset after workflow is proven stable.
-3. Bind local demo server explicitly to `127.0.0.1`.
-4. Normalize Codex Security status language across documentation.
-5. Keep rate limiting documented as intentionally deferred unless exposure model changes.
-6. Require lockfile if dependencies are added later.
+1. Enable the required `App Tests / test` status check in the GitHub ruleset after human approval.
+2. Bind local demo server explicitly to `127.0.0.1`.
+3. Normalize Codex Security status language across documentation.
+4. Keep rate limiting documented as intentionally deferred unless exposure model changes.
+5. Require lockfile if dependencies are added later.
 
 ## Safe Next Steps
 
-- Review this findings draft.
-- Approve or edit the proposed findings.
-- If approved, propose separate minimal patches for CI, server localhost binding, and documentation consistency.
+- Verify in GitHub that `App Tests / test` remains passing on the current pull request.
+- After explicit human approval, enable the required `App Tests / test` status check in the GitHub ruleset.
+- Keep merge blocked if the required check is missing or failing after enforcement is enabled.
+- Propose separate minimal patches for localhost binding and documentation consistency only after the status-check enforcement gate is complete.

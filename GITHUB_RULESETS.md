@@ -107,14 +107,14 @@ Reason:
 
 - the repository has local tests;
 - GitHub CI has now been configured with the `App Tests` workflow;
-- the `App Tests / test (pull_request)` check has executed successfully on PR #2;
-- requiring the pull request check can add merge-time assurance for branch protection;
+- the `App Tests / test` check has executed successfully on PR #2;
+- requiring the exact observed check can add merge-time assurance;
 - changing ruleset enforcement still requires a separate human approval step.
 
 If approved, require this exact status check:
 
 ```text
-App Tests / test (pull_request)
+App Tests / test
 ```
 
 Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
@@ -127,7 +127,7 @@ The current minimum CI gate runs:
 npm test
 ```
 
-The command runs from the app/ working directory in the GitHub Actions workflow.
+The command runs from the `app/` working directory in the GitHub Actions workflow.
 
 ## Review Before Activating
 
@@ -139,7 +139,7 @@ Before changing enforcement to `Active`, confirm:
 - pull request review is required;
 - force pushes are blocked;
 - branch deletion is blocked;
-- required status checks use only the observed `App Tests / test (pull_request)` check;
+- required status checks are enabled only if explicit human approval selects the exact `App Tests / test` check;
 - no external scan or affiliation claim was added to the repository documentation.
 
 ## Safe Configuration Summary
@@ -156,7 +156,7 @@ Required PR review: enabled
 Required approvals: 1
 Block force pushes: enabled
 Block deletion: enabled
-Required status checks: App Tests / test (pull_request), after CI exists and has passed on the pull request
+Required status checks: require `App Tests / test` only after explicit human approval
 ```
 
 ## What This Ruleset Does Not Claim
@@ -165,7 +165,7 @@ This ruleset does not claim:
 
 - that vulnerabilities do not exist;
 - that external scanning was performed;
-- that GitHub CI is configured;
+- that GitHub CI or required status checks prove the absence of vulnerabilities;
 - that a pull request was opened by any external scanner;
 - that an automatic fix was applied;
 - that the repository is affiliated with OpenAI, Daybreak, or Trusted Access for Cyber;
@@ -177,13 +177,13 @@ The ruleset is a repository hygiene control. It should be described as a branch 
 
 Security and remediation evidence remain limited to the sanitized documentation already present in this repository.
 
-## Next Documentation Update
+## Human Approval Log Entry
 
-After the ruleset is created in GitHub, update the human approval log with a concise sanitized entry that records:
+The human approval log should include a concise sanitized entry that records:
 
 - branch ruleset created;
 - default branch targeted;
 - bypass list left empty;
 - PR review required;
-- required status check enabled only after the matching GitHub Actions check passed;
+- required status checks either left disabled or explicitly approved for `App Tests / test`;
 - no external scan or affiliation claim added.

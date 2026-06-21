@@ -45,7 +45,7 @@ Key security documentation and evidence files:
 |---|---:|
 | CRITICAL | 0 |
 | HIGH | 0 |
-| MEDIUM | 1 |
+| MEDIUM | 0 |
 | LOW | 4 |
 | INFO | 2 |
 
@@ -65,42 +65,46 @@ No HIGH findings were identified during this static local review.
 
 ## MEDIUM Findings
 
-### MEDIUM-001: No versioned CI workflow enforces tests or security checks on pull requests
+No active MEDIUM findings remain after the GitHub ruleset was updated to require the `App Tests / test` status check.
+
+### Resolved MEDIUM-001: App test CI and required status check are enforced
 
 **Evidence**
 
-No versioned CI workflow was identified in the tracked file list. Documentation states that GitHub CI has not been configured yet and that required status checks are intentionally deferred.
+A minimal GitHub Actions workflow exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on every pull request so the required `App Tests / test` check is always created, runs on pushes to `main` that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
+
+The `App Tests / test` check executed successfully on PR #2. The GitHub ruleset was then manually updated after human approval to require the exact `App Tests / test` status check.
 
 Relevant files:
 
-- `evidence/github-ruleset-setup.md`
+- `.github/workflows/app-tests.yml`
 - `GITHUB_RULESETS.md`
+- `HUMAN_APPROVAL_LOG.md`
 - `app/package.json`
 
 **Impact**
 
-Without CI, pull requests can rely only on manual execution of local tests and human review. This weakens regression prevention and makes it easier for future changes to bypass the current local security checks.
+The original CI absence and merge-time enforcement gap have been remediated for the configured `App Tests / test` gate. Pull requests should now receive the required check, and GitHub should block merges when that check is missing or failing.
 
 **Recommended Fix**
 
-Add a minimal GitHub Actions workflow that:
+No additional CI-enforcement patch is required for this finding. Continue requiring the exact observed status check:
 
-- checks out the repository;
-- sets up Node.js;
-- runs `npm test` from `app/`;
-- optionally adds a lightweight static validation step that does not require network or third-party scanners.
+```text
+App Tests / test
+```
 
-After CI exists and has run successfully, update repository rulesets to require the CI status check before merge.
+Do not require additional checks until they have run successfully on GitHub and are separately approved.
 
 **Validation Test**
 
-- Open a pull request with the workflow present.
-- Confirm the test job runs automatically.
-- Confirm branch protection requires the workflow to pass before merge.
+- Open or update a pull request.
+- Confirm `App Tests / test` runs automatically and passes.
+- Confirm GitHub blocks merge when the required check is missing or failing.
 
 **Residual Risk**
 
-CI validates only the configured checks. It does not replace human review, threat modeling, dependency review, or periodic security assessment.
+CI validates only the configured checks and does not replace human review, threat modeling, dependency review, or periodic security assessment. The current residual risk is ongoing ruleset drift or future workflow changes that rename or remove the required check.
 
 ---
 
@@ -248,15 +252,13 @@ Continue avoiding raw logs, account identifiers, local paths, private hostnames,
 
 ## Prioritized Remediation Backlog
 
-1. Add minimal CI workflow for local tests.
-2. Enable required CI status check in GitHub ruleset after workflow is proven stable.
-3. Bind local demo server explicitly to `127.0.0.1`.
-4. Normalize Codex Security status language across documentation.
-5. Keep rate limiting documented as intentionally deferred unless exposure model changes.
-6. Require lockfile if dependencies are added later.
+1. Bind local demo server explicitly to `127.0.0.1`.
+2. Normalize Codex Security status language across documentation.
+3. Keep rate limiting documented as intentionally deferred unless exposure model changes.
+4. Require lockfile if dependencies are added later.
 
 ## Safe Next Steps
 
-- Review this findings draft.
-- Approve or edit the proposed findings.
-- If approved, propose separate minimal patches for CI, server localhost binding, and documentation consistency.
+- Verify on each pull request that `App Tests / test` remains required and passing.
+- Keep merge blocked if the required check is missing or failing.
+- Propose separate minimal patches for localhost binding and documentation consistency next.

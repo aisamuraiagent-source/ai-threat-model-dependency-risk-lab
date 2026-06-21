@@ -52,4 +52,42 @@ Date: 2026-06-17
 Reviewer: Repository owner
 Action: GitHub branch ruleset `protect-main-defensive-lab` created for default branch protection
 Decision: Applied; pending pull request review for publication in this log
-Notes: The ruleset targets the default branch, enforcement is active, the bypass list was left empty, pull request review requires one approval, stale approvals are dismissed on new commits, review thread resolution is required, force pushes and branch deletion are blocked, and required status checks are intentionally deferred until GitHub CI exists. No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published. No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.
+Notes:
+- The ruleset targets the default branch.
+- Enforcement is active.
+- The bypass list was left empty.
+- Pull request review requires one approval.
+- Stale approvals are dismissed on new commits.
+- Review thread resolution is required.
+- Force pushes and branch deletion are blocked.
+- Required status checks were intentionally deferred at creation time before the `App Tests / test` check was available.
+- No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published.
+- No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.
+
+### Entry 7
+
+Date: 2026-06-20
+Reviewer: Repository owner
+Action: Ruleset documentation follow-up recorded after CI status check guidance update
+Decision: Documentation-only approval record; no GitHub ruleset enforcement change applied by this entry
+Notes:
+- Branch ruleset created.
+- Default branch targeted.
+- Bypass list left empty.
+- PR review required.
+- Required status checks were left disabled pending explicit human approval for `App Tests / test`; this status was superseded by Entry 8.
+- No external scan or affiliation claim added.
+
+### Entry 8
+
+Date: 2026-06-20
+Reviewer: Repository owner
+Action: Required status check `App Tests / test` enabled in GitHub ruleset
+Decision: Approved and applied manually in GitHub
+Notes:
+- Ruleset `protect-main-defensive-lab` remains active for the default branch.
+- Bypass list remains empty.
+- PR review remains required.
+- Required status check `App Tests / test` is enabled after explicit human approval.
+- No additional status checks were approved by this entry.
+- No external scan or affiliation claim added.

@@ -52,7 +52,7 @@ Use esta ordem na tela `Rulesets / New branch ruleset`:
 6. Se `Include default branch` nao aparecer, escolha `Include by pattern` e use `main`.
 7. Role ate as regras de branch.
 8. Ative apenas as protecoes minimas descritas neste guia.
-9. Ative o status check obrigatorio `App Tests / test` somente se houver aprovacao humana explicita para essa alteracao.
+9. Ative o status check obrigatorio `test` somente se houver aprovacao humana explicita para essa alteracao.
 10. Revise a tela inteira antes de salvar.
 11. Salve inicialmente em `Disabled` ou modo de avaliacao, se disponivel.
 12. Mude para `Active` somente depois de confirmar que a regra mira a branch correta.
@@ -68,7 +68,7 @@ Enable these protections for the default branch:
 - block force pushes;
 - block branch deletion.
 
-These controls preserve a human review gate. The `App Tests / test` CI check now exists, but requiring it remains a separate human-approved ruleset change.
+These controls preserve a human review gate. The `test` CI check from `App Tests` now exists, but requiring it remains a separate human-approved ruleset change.
 
 ## Bypass List
 
@@ -107,14 +107,14 @@ Reason:
 
 - the repository has local tests;
 - GitHub CI has now been configured with the `App Tests` workflow;
-- the `App Tests / test` check has executed successfully on PR #2;
+- the `test` check has executed successfully on PR #2;
 - requiring the exact observed check can add merge-time assurance;
 - changing ruleset enforcement still requires a separate human approval step.
 
 If approved, require this exact status check:
 
 ```text
-App Tests / test
+test
 ```
 
 Do not require any additional status checks unless they have first run successfully on GitHub and are separately approved.
@@ -139,7 +139,7 @@ Before changing enforcement to `Active`, confirm:
 - pull request review is required;
 - force pushes are blocked;
 - branch deletion is blocked;
-- required status checks are enabled only if explicit human approval selects the exact `App Tests / test` check;
+- required status checks are enabled only if explicit human approval selects the exact `test` check;
 - no external scan or affiliation claim was added to the repository documentation.
 
 ## Safe Configuration Summary
@@ -156,7 +156,7 @@ Required PR review: enabled
 Required approvals: 1
 Block force pushes: enabled
 Block deletion: enabled
-Required status checks: require `App Tests / test` only after explicit human approval
+Required status checks: require `test` only after explicit human approval
 ```
 
 ## What This Ruleset Does Not Claim
@@ -185,5 +185,5 @@ The human approval log should include a concise sanitized entry that records:
 - default branch targeted;
 - bypass list left empty;
 - PR review required;
-- required status checks either left disabled or explicitly approved for `App Tests / test`;
+- required status checks either left disabled or explicitly approved for `test`;
 - no external scan or affiliation claim added.

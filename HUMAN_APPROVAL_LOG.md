@@ -60,7 +60,7 @@ Notes:
 - Stale approvals are dismissed on new commits.
 - Review thread resolution is required.
 - Force pushes and branch deletion are blocked.
-- Required status checks were intentionally deferred at creation time before the `App Tests / test` check was available.
+- Required status checks were intentionally deferred at creation time before the `test` check was available.
 - No external scan, automatic fix, raw UI, account, local machine, network, credential, or log data is published.
 - No affiliation with OpenAI, Daybreak, or Trusted Access for Cyber is claimed.
 
@@ -75,5 +75,5 @@ Notes:
 - Default branch targeted.
 - Bypass list left empty.
 - PR review required.
-- Required status checks left disabled pending explicit human approval for `App Tests / test`.
+- Required status checks left disabled pending explicit human approval for `test`.
 - No external scan or affiliation claim added.

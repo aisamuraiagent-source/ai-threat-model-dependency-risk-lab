@@ -69,9 +69,9 @@ No HIGH findings were identified during this static local review.
 
 **Evidence**
 
-A minimal GitHub Actions workflow now exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on every pull request so the required `App Tests / test` check is always created, runs on pushes to `main` that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
+A minimal GitHub Actions workflow now exists at `.github/workflows/app-tests.yml`. It defines the `App Tests` workflow, supports manual execution with `workflow_dispatch`, runs on every pull request so the required `test` check is always created, runs on pushes to `main` that affect the app or workflow, sets up Node.js 22, and runs `npm test` from the `app/` working directory.
 
-The `App Tests / test` check executed successfully on PR #2. `GITHUB_RULESETS.md` now documents the exact check name that may be required after explicit human approval.
+The `test` check executed successfully on PR #2. `GITHUB_RULESETS.md` now documents the exact check name that may be required after explicit human approval.
 
 Relevant files:
 
@@ -81,14 +81,14 @@ Relevant files:
 
 **Impact**
 
-The original CI absence has been remediated, but merge-time enforcement is not complete until the GitHub ruleset requires the passing `App Tests / test` status check. Until then, reviewers still need to verify that the check ran and passed before merge.
+The original CI absence has been remediated, but merge-time enforcement is not complete until the GitHub ruleset requires the passing `test` status check. Until then, reviewers still need to verify that the check ran and passed before merge.
 
 **Recommended Fix**
 
 After human approval, update the GitHub ruleset manually to require the exact observed status check:
 
 ```text
-App Tests / test
+test
 ```
 
 Do not require additional checks until they have run successfully on GitHub and are separately approved.
@@ -96,7 +96,7 @@ Do not require additional checks until they have run successfully on GitHub and 
 **Validation Test**
 
 - Open or update a pull request.
-- Confirm `App Tests / test` runs automatically and passes.
+- Confirm `test` runs automatically and passes.
 - Enable the required status check in the GitHub ruleset only after approval.
 - Confirm GitHub blocks merge when the required check is missing or failing.
 
@@ -250,7 +250,7 @@ Continue avoiding raw logs, account identifiers, local paths, private hostnames,
 
 ## Prioritized Remediation Backlog
 
-1. Enable the required `App Tests / test` status check in the GitHub ruleset after human approval.
+1. Enable the required `test` status check in the GitHub ruleset after human approval.
 2. Bind local demo server explicitly to `127.0.0.1`.
 3. Normalize Codex Security status language across documentation.
 4. Keep rate limiting documented as intentionally deferred unless exposure model changes.
@@ -258,7 +258,7 @@ Continue avoiding raw logs, account identifiers, local paths, private hostnames,
 
 ## Safe Next Steps
 
-- Verify in GitHub that `App Tests / test` remains passing on the current pull request.
-- After explicit human approval, enable the required `App Tests / test` status check in the GitHub ruleset.
+- Verify in GitHub that `test` remains passing on the current pull request.
+- After explicit human approval, enable the required `test` status check in the GitHub ruleset.
 - Keep merge blocked if the required check is missing or failing after enforcement is enabled.
 - Propose separate minimal patches for localhost binding and documentation consistency only after the status-check enforcement gate is complete.
